@@ -81,16 +81,6 @@ public class TitleScreen extends Screen {
 	}
 
 	/**
-	 * Shifts the focus to the next menu item.
-	 */
-
-
-	/**
-	 * Shifts the focus to the previous menu item.
-	 */
-
-
-	/**
 	 * Draws the elements associated with the screen.
 	 */
 	private void draw() {
@@ -103,6 +93,7 @@ public class TitleScreen extends Screen {
 	}
 
 
+    /** Moves the selection forward, wrapping from Exit to Play. */
     private void nextMenuItem() {
         if (this.returnCode == 2) this.returnCode=3;
         else if (this.returnCode == 3) this.returnCode=8;
@@ -111,6 +102,7 @@ public class TitleScreen extends Screen {
         else this.returnCode=2;
     }
 
+    /** Moves the selection backward, wrapping from Play to Exit. */
     private void previousMenuItem() {
         if (this.returnCode == 2) this.returnCode=0;
         else if (this.returnCode == 0) this.returnCode=4;

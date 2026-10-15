@@ -15,7 +15,10 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.UUID;
 
-/** Versioned UTF-8 profile storage with validation, backup, and atomic replace. */
+/**
+ * Versioned UTF-8 profile storage with validation and backup.
+ * File replacement is atomic where supported, with a non-atomic fallback.
+ */
 public final class ProfileStore {
     private static final String VERSION = "1";
     private final Path file;

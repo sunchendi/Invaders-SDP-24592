@@ -144,23 +144,6 @@ public final class DrawManager {
 	}
 
 	/**
-	 * First part of the drawing process. Initialices buffers, draws the
-	 * background and prepares the images.
-	 * 
-	 * @param screen
-	 *            Screen to draw in.
-	 */
-
-
-	/**
-	 * Draws the completed drawing on screen.
-	 * 
-	 * @param screen
-	 *            Screen to draw on.
-	 */
-
-
-	/**
 	 * Draws an entity, using the apropiate image.
 	 * 
 	 * @param entity
@@ -284,16 +267,6 @@ public final class DrawManager {
 	}
 
 	/**
-	 * Draws main menu.
-	 * 
-	 * @param screen
-	 *            Screen to draw on.
-	 * @param option
-	 *            Option selected.
-	 */
-
-
-	/**
 	 * Draws game results.
 	 * 
 	 * @param screen
@@ -332,18 +305,6 @@ public final class DrawManager {
 		drawCenteredRegularString(screen, accuracyString, screen.getHeight()
 				/ height + fontRegularMetrics.getHeight() * 6);
 	}
-
-	/**
-	 * Draws interactive characters for name input.
-	 * 
-	 * @param screen
-	 *            Screen to draw on.
-	 * @param name
-	 *            Current name selected.
-	 * @param nameCharSelected
-	 *            Current character selected for modification.
-	 */
-
 
 	/**
 	 * Draws basic content of game over screen.
@@ -741,6 +702,11 @@ public final class DrawManager {
 		}
 	}
 
+    /**
+     * Initializes a fresh back buffer, drawing context, and font metrics.
+     *
+     * @param screen screen whose dimensions determine the buffer size
+     */
     public void initDrawing(final Screen screen) {
 		backBuffer = new BufferedImage(screen.getWidth(), screen.getHeight(),
 				BufferedImage.TYPE_INT_RGB);
@@ -759,6 +725,11 @@ public final class DrawManager {
 		// drawGrid(screen);
 	}
 
+    /**
+     * Presents the buffer when a window is attached and releases drawing resources.
+     *
+     * @param screen screen whose drawing cycle is being completed
+     */
     public void completeDrawing(final Screen screen) {
 		try {
 			if (graphics != null)
@@ -771,6 +742,13 @@ public final class DrawManager {
 		}
 	}
 
+    /**
+     * Draws the three-letter high-score name editor and highlights its selection.
+     *
+     * @param screen screen to draw on
+     * @param name current three-letter name
+     * @param nameCharSelected index of the letter selected for editing
+     */
     public void drawNameInput(final Screen screen, final char[] name,
 			final int nameCharSelected) {
 		drawNameInputAt(screen, name, nameCharSelected, screen.getHeight()
@@ -876,6 +854,12 @@ public final class DrawManager {
         }
     }
 
+    /**
+     * Draws the title-menu options and highlights the selected destination.
+     *
+     * @param screen screen to draw on
+     * @param option selected screen code, rather than its position in the menu
+     */
     public void drawMenu(final Screen screen, final int option) {
         String[] labels={"Play","High scores","Records & Achievements","Settings","Exit"};
         int[] codes={2,3,8,4,0};

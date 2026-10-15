@@ -55,7 +55,7 @@ public class ScoreScreen extends Screen {
 	private Cooldown selectionCooldown;
 
 	/**
-	 * Constructor, establishes the properties of the screen.
+	 * Creates a score screen without newly unlocked achievements.
 	 * 
 	 * @param width
 	 *            Screen width.
@@ -63,12 +63,22 @@ public class ScoreScreen extends Screen {
 	 *            Screen height.
 	 * @param fps
 	 *            Frames per second, frame rate at which the game is run.
-	 * @param gameState
-	 *            Current game state.
+	 * @param state
+	 *            Completed game state.
 	 */
     public ScoreScreen(final int width, final int height, final int fps, final GameState state) {
         this(width,height,fps,state,Collections.<Achievement>emptyList());
     }
+
+    /**
+     * Creates a score screen with a snapshot of this run's new achievements.
+     *
+     * @param width screen width
+     * @param height screen height
+     * @param fps frames per second
+     * @param gameState completed game state
+     * @param unlocks achievements unlocked during the completed run
+     */
     public ScoreScreen(final int width, final int height, final int fps,
             final GameState gameState, final List<Achievement> unlocks) {
         super(width,height,fps);
